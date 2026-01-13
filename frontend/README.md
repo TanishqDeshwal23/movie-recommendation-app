@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+🎬 AI Movie Recommendation App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, AI-powered movie recommendation platform with persistent search history and a polished UI.
 
-## Available Scripts
+🌟 Overview
 
-In the project directory, you can run:
+AI Movie Recommendation App is a full-stack web application that suggests movies based on natural language user preferences such as genres, moods, or descriptions (e.g. “sci-fi movies with time travel”).
 
-### `npm start`
+The application demonstrates:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+AI integration
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Backend API design
 
-### `npm test`
+Database persistence
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Frontend UX/UI design
 
-### `npm run build`
+Real-world engineering practices
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This project was built as a technical assignment and goes beyond the base requirements with additional features and UI enhancements.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+✨ Key Features
+🎥 Smart Movie Recommendations
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Accepts free-text movie preferences
 
-### `npm run eject`
+Generates 3–5 relevant movie suggestions
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Uses OpenAI API (with graceful fallback handling)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+💾 Persistent Search History
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Stores user input and recommendations in SQLite
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Displays previous searches in a clean UI
 
-## Learn More
+Demonstrates full CRUD-style backend interaction
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+🎨 Modern UI & UX
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Gradient animated background
 
-### Code Splitting
+Ambient glow effects
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Card-based layout
 
-### Analyzing the Bundle Size
+Responsive design
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Clean, minimal, and professional look
 
-### Making a Progressive Web App
+⚙️ Robust Backend Architecture
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Fastify-based REST API
 
-### Advanced Configuration
+Secure environment variable handling
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Graceful error handling and fallback logic
 
-### Deployment
+🧠 Tech Stack
+Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+React
 
-### `npm run build` fails to minify
+Custom CSS (no UI frameworks)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Responsive & animated UI
+
+Backend
+
+Node.js
+
+Fastify
+
+OpenAI API
+
+Database
+
+SQLite (lightweight & persistent)
+
+📁 Project Structure
+movie-recommendation-app/
+│
+├── backend/
+│   ├── server.js          # Fastify server & API routes
+│   ├── db.js              # SQLite database configuration
+│   ├── movies.db          # SQLite database file
+│   └── .env               # Environment variables
+│
+├── frontend/
+│   ├── src/
+│   │   ├── App.js         # Main React component
+│   │   └── App.css        # Global styling & effects
+│   └── package.json
+│
+├── .gitignore
+└── README.md
+
+🔄 Application Flow
+
+User enters a movie preference in the frontend.
+
+Frontend sends a POST request to the backend.
+
+Backend processes the request and calls OpenAI.
+
+Movie recommendations are generated.
+
+User input and recommendations are stored in SQLite.
+
+Frontend displays results and updates search history.
+
+🔐 OpenAI Integration & Fallback Logic
+
+OpenAI API integration is fully implemented.
+
+During development, a mock fallback response is used when OpenAI quota or billing is unavailable.
+
+This ensures:
+
+The app never crashes
+
+The full workflow remains demo-ready
+
+No paid API access is required to evaluate functionality
+
+⚠️ Once OpenAI billing is enabled, the app automatically switches to live AI recommendations without code changes.
