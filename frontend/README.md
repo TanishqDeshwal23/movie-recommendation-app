@@ -125,3 +125,7 @@ The full workflow remains demo-ready
 No paid API access is required to evaluate functionality
 
 ⚠️ Once OpenAI billing is enabled, the app automatically switches to live AI recommendations without code changes.
+## 🌐 Live Demo
+
+- **Frontend (Vercel):** https://your-vercel-app.vercel.app
+- **Backend (Render):** https://your-backend.onrender.com
