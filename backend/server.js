@@ -9,7 +9,11 @@ const db = require("./db");
 const fastify = Fastify({ logger: true });
 
 // Enable CORS
-fastify.register(cors);
+fastify.register(cors, {
+    origin: "*",
+    methods: ["GET", "POST"]
+  });
+  
 
 // OpenAI client
 const openai = new OpenAI({
