@@ -47,3 +47,9 @@ li {
   color: gray;
   margin-top: 10px;
 }
+.history-card {
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
