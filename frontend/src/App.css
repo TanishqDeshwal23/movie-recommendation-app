@@ -1,45 +1,58 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+  background-color: #f3f4f6;
+  margin: 0;
 }
 
 .container {
-  max-width: 500px;
-  margin: 50px auto;
+  max-width: 700px;
+  margin: 40px auto;
   background: white;
   padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-top: 30px;
 }
 
 input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
+  padding: 12px;
   font-size: 16px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+}
+
+input:focus {
+  outline: 2px solid #2563eb;
 }
 
 button {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
+  font-size: 16px;
   background-color: #2563eb;
   color: white;
   border: none;
-  font-size: 16px;
+  border-radius: 6px;
   cursor: pointer;
-  border-radius: 4px;
 }
 
 button:hover {
   background-color: #1e40af;
 }
 
-ul {
-  margin-top: 20px;
-}
-
-li {
-  margin-bottom: 8px;
+button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
 }
 
 .note {
@@ -47,9 +60,35 @@ li {
   color: gray;
   margin-top: 10px;
 }
-.history-card {
-  background: #f9f9f9;
+
+.empty {
+  color: gray;
+  margin-top: 15px;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.movie-card {
+  background: #eef2ff;
   padding: 12px;
   border-radius: 6px;
+  font-weight: 500;
+}
+
+.history-card {
+  background: #f9fafb;
+  padding: 15px;
+  border-radius: 8px;
   margin-bottom: 15px;
+}
+
+hr {
+  margin: 40px 0;
+  border: none;
+  border-top: 1px solid #e5e7eb;
 }

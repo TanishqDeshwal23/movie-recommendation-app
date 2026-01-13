@@ -13,8 +13,8 @@ function App() {
       const res = await fetch("http://localhost:5000/history");
       const data = await res.json();
       setHistory(data.history || []);
-    } catch (err) {
-      console.error("Failed to fetch history");
+    } catch {
+      console.error("Failed to load history");
     }
   };
 
@@ -31,26 +31,21 @@ function App() {
     try {
       const res = await fetch("http://localhost:5000/recommend", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userInput: input }),
       });
 
       const data = await res.json();
       setMovies(data.movies || []);
       if (data.note) setNote(data.note);
-
-      // refresh history after search
       fetchHistory();
-    } catch (err) {
+    } catch {
       alert("Backend not reachable");
     }
 
     setLoading(false);
   };
 
-  // load history on first page load
   useEffect(() => {
     fetchHistory();
   }, []);
@@ -61,25 +56,33 @@ function App() {
 
       <input
         type="text"
-        placeholder="e.g. action movies with strong female lead"
+        placeholder="Describe the kind of movies you like..."
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
 
-      <button onClick={getRecommendations}>
-        {loading ? "Loading..." : "Get Recommendations"}
+      <button onClick={getRecommendations} disabled={loading}>
+        {loading ? "Finding movies..." : "Get Recommendations"}
       </button>
 
       {note && <p className="note">{note}</p>}
 
+      {!loading && movies.length === 0 && (
+        <p className="empty">
+          Enter a preference to get movie recommendations 🎥
+        </p>
+      )}
+
       {movies.length > 0 && (
         <>
-          <h2>🎥 Recommendations</h2>
-          <ul>
+          <h2>🎥 Recommended Movies</h2>
+          <div className="movie-grid">
             {movies.map((movie, index) => (
-              <li key={index}>{movie}</li>
+              <div key={index} className="movie-card">
+                🎬 {movie}
+              </div>
             ))}
-          </ul>
+          </div>
         </>
       )}
 
@@ -87,20 +90,16 @@ function App() {
 
       <h2>📜 Search History</h2>
 
-      {history.length === 0 && <p>No searches yet.</p>}
+      {history.length === 0 && <p className="empty">No searches yet.</p>}
 
       {history.map((item) => (
         <div key={item.id} className="history-card">
           <strong>{item.user_input}</strong>
-
           <ul>
-            {item.recommended_movies
-              .split("\n")
-              .map((movie, index) => (
-                <li key={index}>{movie}</li>
-              ))}
+            {item.recommended_movies.split("\n").map((movie, i) => (
+              <li key={i}>{movie}</li>
+            ))}
           </ul>
-
           <small>{new Date(item.timestamp).toLocaleString()}</small>
         </div>
       ))}
