@@ -4,7 +4,30 @@ const Fastify = require("fastify");
 const cors = require("@fastify/cors");
 const OpenAI = require("openai");
 
-const db = require("./db");
+const sqlite3 = require("sqlite3").verbose();
+const path = require("path");
+
+const dbPath = path.join(__dirname, "movies.db");
+
+const db = new sqlite3.Database(dbPath, (err) => {
+  if (err) {
+    console.error("SQLite connection error:", err.message);
+  } else {
+    console.log("SQLite connected at", dbPath);
+  }
+});
+
+db.serialize(() => {
+  db.run(`
+    CREATE TABLE IF NOT EXISTS recommendations (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_input TEXT,
+      recommended_movies TEXT,
+      timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+  `);
+});
+
 
 const fastify = Fastify({ logger: true });
 
