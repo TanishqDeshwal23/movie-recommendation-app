@@ -10,7 +10,7 @@ function App() {
 
   const fetchHistory = async () => {
     try {
-      const res = await fetch("http://localhost:5000/history");
+      const res = await fetch("https://movie-recommendation-app-yzf9.onrender.com/history");
       const data = await res.json();
       setHistory(data.history || []);
     } catch {
@@ -29,7 +29,7 @@ function App() {
     setNote("");
 
     try {
-      const res = await fetch("http://localhost:5000/recommend", {
+      const res = await fetch("https://movie-recommendation-app-yzf9.onrender.com/recommend", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userInput: input }),
@@ -52,7 +52,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1>🎬 Movie Recommendation App</h1>
+      <h1>🎬 AI Movie Recommendation App</h1>
 
       <input
         type="text"
